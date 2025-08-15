@@ -1,0 +1,68 @@
+1. Group array of objects by category
+// This code groups an array of objects by a specified category.
+const products = [
+  { id: 1, name: "Laptop", price: 800, category: "Electronics", stock: 5 },
+  { id: 2, name: "Phone", price: 500, category: "Electronics", stock: 10 },
+  { id: 3, name: "Shirt", price: 40, category: "Clothing", stock: 50 },
+  { id: 4, name: "Shoes", price: 60, category: "Clothing", stock: 30 },
+  { id: 5, name: "Watch", price: 120, category: "Accessories", stock: 0 }
+];
+// Output:
+// {
+//   Electronics: [                                               
+
+//     { id: 1, name: "Laptop", price: 800, stock: 5 }, 
+//     { id: 2, name: "Phone", price: 500, stock: 10 }
+//   ],
+//   Clothing: [
+//     { id: 3, name: "Shirt", price: 40, stock: 50 },
+//     { id: 4, name: "Shoes", price: 60, stock: 30 }
+//   ],   
+//   Accessories: [{ id: 5, name: "Watch", price: 120, stock: 0 }]
+// }
+
+-------------------------------------------------------
+
+// first method using reduce
+const groupedByCategory = products.reduce((acc, product) => {
+  if (!acc[product.category]) {
+    acc[product.category] = [];
+  }
+  acc[product.category].push(product);
+  return acc;
+}, {}); 
+console.log(groupedByCategory);
+------------------------------------------------------
+
+
+// second method using forEach
+const groupedByCategory2 = {};
+products.forEach(product => {
+  if (!groupedByCategory2[product.category]) {
+    groupedByCategory2[product.category] = [];
+  }
+  groupedByCategory2[product.category].push(product);
+});
+console.log(groupedByCategory2);  
+
+---------------------------------------------------------------
+
+
+// third method using Object.groupBy (ES2022+)
+// Note: Object.groupBy is not widely supported in all environments yet.
+
+ const groupedObj =  Object.groupBy(products , (item) => item.category);
+
+
+ // fourth method using a simple loop
+const groupedByCategory3 = {};
+for (const product of products) {   
+  if (groupedByCategory3[product.category]) {
+    groupedByCategory3[product.category].push(product);
+  }
+  else {
+    groupedByCategory3[product.category] = [product];
+  }   
+  
+} 
+console.log(groupedByCategory3); // Output: same as above
