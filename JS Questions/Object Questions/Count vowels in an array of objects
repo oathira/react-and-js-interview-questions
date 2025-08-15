@@ -1,0 +1,39 @@
+1. Count vowels in an array of objects
+// Given an array of objects, count the number of vowels in each string property of the objects.
+
+const sampArr = [ 
+    { a: "pop", b: "offline", c: "both" }, 
+    { a: "javaScript", b: "HTML", c: "CSS" }, 
+    { a: "Node", b: "TypeScript", c: "Next" } 
+];
+// Expected Output:
+// [
+//   { a: 1, b: 3, c: 1 },
+//   { a: 3, b: 1, c: 1 },
+//   { a: 2, b: 3, c: 1 }
+// ]
+
+
+function countVowels(arr){
+    const vowels ="aeiouAEIOU";
+
+    function numOfVowels(str){
+        let count = 0;
+        for(let char of str){
+            if(vowels.includes(char)){
+                count++
+            }
+        }
+        return count;
+    }
+
+    return arr.map(item => {
+        const obj = {};
+        for (let key in item){
+            obj[key] = numOfVowels(item[key]);
+        }
+        return obj;
+    });
+}
+
+console.log(countVowels(sampArr));  

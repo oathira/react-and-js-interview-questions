@@ -20,3 +20,9 @@ function reverseVowels(s) {
 
 reverseVowels("IceCreAm"); // "AceCreIm"
 
+useEffect(() => {
+ const handler = setTimeout(() => {
+ console.log("User finished typing:", input);
+ }, 500);
+ return () => clearTimeout(handler);
+}, [input]);
