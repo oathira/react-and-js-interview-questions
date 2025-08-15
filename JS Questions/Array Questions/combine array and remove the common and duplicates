@@ -1,0 +1,36 @@
+1. Combine array and remove the common and duplicates
+
+//first method using filter and includes
+const arr1 = [1, 2, 3, 4, 4,    5, 6, 7, 8];
+const arr2 = [5, 6, 7, 8, 9, 10];
+const combined = [...arr1, ...arr2];    
+
+const uniqueCombined = combined.filter((item, index) => {
+  return combined.indexOf(item) === index && !arr1.includes(item) && !arr2.includes(item);
+});     
+console.log(uniqueCombined); // [1, 2, 3, 4, 9, 10] 
+
+
+===============================================================================================
+
+
+//second method using a loop and Set
+// This method combines the arrays and removes duplicates and common elements   
+const arr1 =[1,2,3,4,4,5,6,7,8];
+const arr2=[5,6,7,8,9,10];
+
+function common(arr1, arr2) {
+    let output = [];
+    for (let i=0; i<arr1.length; i++) {
+        if (!arr2.includes(arr1[i])) {
+            output.push(arr1[i])
+        }
+    }
+     for (let i=0; i<arr2.length; i++) {
+        if (!arr1.includes(arr2[i])) {
+            output.push(arr2[i])
+        }
+    }
+    return [...new Set(output)]; // Remove duplicates using Set
+}
+console.log(common(arr1,arr2));//=>need this output [1,2,3,4,9,10]
