@@ -1,0 +1,75 @@
+Given an array of objects, sum the values of each key across all objects and return a single object with the totals.
+
+Example Input:
+
+const data = [
+  { a: 2, b: 3, c: 5 },
+  { a: 4, b: 1, c: 2 },
+  { a: 1, b: 7, c: 4 }
+];
+
+
+Expected Output:
+
+{ a: 7, b: 11, c: 11 }
+
+
+Explanation:
+
+a: 2 + 4 + 1 = 7
+
+b: 3 + 1 + 7 = 11
+
+c: 5 + 2 + 4 = 11
+
+Your Code Explanation
+function sumUniqueKey(arr){
+    let output ={};
+    arr.map((item)=>{
+        for(let key in item){
+            output[key] = (output[key] || 0) + item[key];
+        }
+    })
+    return output;
+}
+
+
+output[key] = (output[key] || 0) + item[key]; → adds current value to the previous sum, or initializes to 0.
+
+for..in iterates over all keys of each object.
+
+map is being used here, but forEach is more appropriate, since we are not returning anything from map.
+
+Better Version Using forEach
+function sumUniqueKey(arr){
+    let output = {};
+    arr.forEach(item => {
+        for(let key in item){
+            output[key] = (output[key] || 0) + item[key];
+        }
+    });
+    return output;
+}
+
+console.log(sumUniqueKey(data)); // { a: 7, b: 11, c: 11 }
+
+JS Interview Context
+
+This is a classic JavaScript object/array interview question to test:
+
+Object traversal (for...in)
+
+Array iteration (forEach, map, reduce)
+
+Dynamic key access (output[key])
+
+Summing values across objects
+
+✅ Advanced version often asked: Use reduce to do it in one line:
+
+const summed = data.reduce((acc, curr) => {
+    for (let key in curr) acc[key] = (acc[key] || 0) + curr[key];
+    return acc;
+}, {});
+
+console.log(summed); // { a: 7, b: 11, c: 11 }
