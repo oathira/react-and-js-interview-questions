@@ -1,0 +1,21 @@
+1. Print common substring from an array
+// Given an array of strings, find the longest common substring that appears in all strings.
+const arr = ['prefix' , 'presucc' ,'pregh'];
+
+function longestSu(){
+    let current = arr[0];
+    let longest = "";
+    for(let i=0;i<current.length;i++){
+        for(j=i+1;j<current.length;j++){
+            const substring = current.slice(i,j);
+
+            if(arr.every((word)=>word.includes(substring))){
+                if(substring.length>longest.length){
+                    longest = substring;
+                }
+            }
+        }
+    }
+return longest;
+}
+console.log(longestSu()); // Output: "pre"

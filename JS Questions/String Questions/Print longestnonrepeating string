@@ -1,0 +1,23 @@
+1. Print longest non-repeating substring
+//first way using a loop
+const str = "abcabcbbdd";
+
+function longestSubstring() {
+  let longest = "";
+  let current = "";
+  for (let i = 0; i < str.length; i++) {
+    if (current.includes(str[i])) {
+      current = current.slice(current.indexOf(str[i]) + 1);
+    }
+    current += str[i];
+    if (current.length > longest.length) {
+      longest = current;
+    }
+  }
+  return longest;
+}
+//
+console.log(longestSubstring());
+// Output: "abc" (the longest substring without repeating characters)
+
+-----------------------------------------------------------------------

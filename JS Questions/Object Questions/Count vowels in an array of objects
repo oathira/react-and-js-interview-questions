@@ -37,3 +37,9 @@ function countVowels(arr){
 }
 
 console.log(countVowels(sampArr));  
+
+
+const output = arr.reduce((acc,num)=>{
+    acc[num] =(acc[num]||0)+1
+    return acc;
+},{});
