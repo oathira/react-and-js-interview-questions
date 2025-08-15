@@ -1,0 +1,37 @@
+1.Count the number of nested children in an object
+//first method using recursion
+function countNestedChildren(obj) {
+  if (!obj || !obj.children) {  
+    return 0; // Base case: no children             
+    }                                                               
+    return 1 + countNestedChildren(obj.children); // Recursive case
+}
+
+const obj1 = {
+  children: {
+    children: {
+      children: {
+        children: {
+          children: {
+            // last level with no further children
+          },
+        },
+      },
+    },
+  },
+};
+
+console.log(countNestedChildren(obj1)); // 👉 Output: 5
+----------------------------------------------------------------------------
+
+//second method using a loop
+
+let count = 0;
+let current = obj1;
+
+while (current?.children) {
+  count++;
+  current = current.children;
+}
+
+console.log(count); // 👉 Output: 5

@@ -1,0 +1,11 @@
+1.remove duplicates in an array
+//first method using Set
+const arr =[5,6,1,5,2,3,6];
+const uniqueArr = [...new Set(arr)];
+console.log(uniqueArr); // [5, 6, 1, 2, 3]
+
+
+//second method using filter
+const arr2 = [5, 6, 1, 5, 2, 3, 6];
+const uniqueArr2 = arr2.filter((item, index) => arr2.indexOf(item) === index);
+console.log(uniqueArr2); // [5, 6, 1, 2,3]              

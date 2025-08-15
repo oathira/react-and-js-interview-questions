@@ -1,25 +1,11 @@
-1 .
-//Print First repeating character in String
-const target = "success";
-function hi() {
-  let seen = new Set();
-  for (let i of target) {
-    if (seen.has(i)) {
-      return i;
-    } else {
-      seen.add(i);
-    }
-  }
-}
-console.log(hi());
-
-2.Reverse a string "Hello World" 
-
+1.Reverse a string "Hello World" 
+//first method using built-in functions
 const str = "Hello World";
 const reversed = str.split("").reverse().join("");
 console.log(reversed); // "dlroW olleH"
 
 -----------------------------------------------------------------
+//second method using a loop
 let str2 = "Hello World";
 let reversed2 = "";
 for (let i = str2.length - 1; i >= 0; i--) {

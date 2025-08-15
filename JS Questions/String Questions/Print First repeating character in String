@@ -1,0 +1,14 @@
+1 .
+//Print First repeating character in String
+const target = "success";
+function hi() {
+  let seen = new Set();
+  for (let i of target) {
+    if (seen.has(i)) {
+      return i;
+    } else {
+      seen.add(i);
+    }
+  }
+}
+console.log(hi());
