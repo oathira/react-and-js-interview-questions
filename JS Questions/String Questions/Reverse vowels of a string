@@ -1,0 +1,22 @@
+1.Reverse vowels of a string
+
+// Input: s = "IceCreAm"
+// Output: "AceCreIm"
+
+
+function reverseVowels(s) {
+    const vowels = 'aeiouAEIOU';
+    const includedVowels = [...s].filter(item=> vowels.includes(item));
+    let result = '';
+    for(let char of s) {
+        if(vowels.includes(char)) {
+          result += includedVowels.pop()
+        } else {
+            result += char;
+        }
+    }
+    return result
+}
+
+reverseVowels("IceCreAm"); // "AceCreIm"
+
