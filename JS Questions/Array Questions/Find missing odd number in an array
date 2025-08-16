@@ -1,0 +1,12 @@
+1.Find missing odd number in an array
+// Given an array of odd numbers with a common difference, find the missing odd number
+const arr1 = [5, 7, 9, 11, 15, 17];
+const commonDiff = 2;
+
+for (let i = 0; i < arr1.length - 1; i++) {
+  if ((arr1[i + 1] - arr1[i]) !== commonDiff) {
+    console.log(arr1[i] + commonDiff); // Missing number
+    break; // stop after finding the first missing
+  }
+}
+//output: 13

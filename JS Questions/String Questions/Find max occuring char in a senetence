@@ -1,0 +1,53 @@
+1.Find max occuring char
+
+// Given a sentence, find the character that occurs the most frequently
+// This solution is case-sensitive and counts spaces as characters
+// It can be modified to ignore spaces or be case-insensitive if needed
+//First method using nested loops
+let string ="This is JavaScript interview question";
+let maxChar = '';   
+let maxCount = 0;
+for (let i = 0; i < string.length; i++) {
+    let count = 0;
+    for (let j = 0; j < string.length; j++) {
+        if (string[i] === string[j]) {
+            count++;
+        }
+    }
+    if (count > maxCount) {
+        maxCount = count;
+        maxChar = string[i];
+    }
+}
+console.log(`Max occurring character is "${maxChar}" with count ${maxCount}`); // Output: Max occurring character is "i" with count 4
+
+
+
+-------------------------------------------------------------------
+
+
+//Second method using a single loop
+let string = "This is JavaScript interview question";
+let out = {};
+
+// Count occurrences of each character (ignoring spaces)
+for (let ch of string) {
+  if (ch !== " ") {
+    out[ch] = (out[ch] || 0) + 1;
+  }
+}
+
+// Find the character with maximum frequency
+let maxChar = "";
+let maxCount = 0;
+
+for (let key in out) {
+  if (out[key] > maxCount) {
+    maxCount = out[key];
+    maxChar = key;
+  }
+}
+
+console.log(`Most frequent character: '${maxChar}' (appears ${maxCount} times)`);
+// Output: Most frequent character: 'i' (appears 4 times)
+// This method uses a single loop to count occurrences and another loop to find the max, making it efficient and straightforward.

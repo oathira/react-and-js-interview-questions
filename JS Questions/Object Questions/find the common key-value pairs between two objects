@@ -1,0 +1,33 @@
+1.find the common key-value pairs between two objects.
+
+Here’s a clean approach in JavaScript:
+
+function commonKeyValues(obj1, obj2) {
+  const result = {};
+
+  for (let key in obj1) {
+    // check if key exists in obj2 AND values match
+    if (obj2.hasOwnProperty(key) && obj1[key] === obj2[key]) {
+      result[key] = obj1[key];
+    }
+  }
+
+  return result;
+}
+
+// Example
+const obj1 = { a: 1, b: 2, c: 3, d: 4 };
+const obj2 = { b: 2, c: 30, d: 4, e: 5 };
+
+console.log(commonKeyValues(obj1, obj2));
+// Output: { b: 2, d: 4 }
+
+
+✅ Explanation:
+
+Loop through keys of obj1.
+
+Check if the same key exists in obj2.
+
+Compare values. If equal, add to result.
+// This method ensures that only common key-value pairs are returned, making it efficient and straightforward.

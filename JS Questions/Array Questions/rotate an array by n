@@ -1,0 +1,23 @@
+1. Rotate an array by n positions
+// Given an array and a number n, rotate the array by n positions to the right
+
+const arr1 = [1, 2, 3, 4, 5, 6, 7, 8];  
+// n is the number of positions to rotate
+const n = 3;
+const rotated = [...arr1.slice(n), ...arr1.slice(0, n)];
+console.log(rotated); // [4, 5, 6, 7, 8, 1, 2, 3]
+// This method uses slice to split the array and concatenate the parts
+
+// Alternative method using a loop
+function rotateArray(arr, n) {  
+    const len = arr.length;
+    n = n % len; // Handle cases where n is greater than array length
+    const output = [];
+    
+    for (let i = 0; i < len; i++) {
+        output[(i + n) % len] = arr[i];
+    }
+    
+    return output;
+}
+console.log(rotateArray(arr1, n)); // [4, 5, 6, 7, 8, 1, 2, 3]

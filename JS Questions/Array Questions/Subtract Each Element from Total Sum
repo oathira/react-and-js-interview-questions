@@ -1,0 +1,11 @@
+1.//Substract Each Element from Total Sum
+// Given an array, subtract each element from the total sum of the array
+const arr1 = [2, 7, 11, 4, -2];
+    
+// Calculate total sum first
+const total = arr1.reduce((a, b) => a + b, 0);
+
+// Map each element to total minus itself
+const output = arr1.map(num => total - num);
+
+console.log(output); // [20, 15, 11, 18, 24]
